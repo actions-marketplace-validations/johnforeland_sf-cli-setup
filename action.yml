@@ -2,12 +2,31 @@ name: 'Salesforce SF CLI Action'
 author: John Føreland
 description: 'This action allows to use Salesforce SF CLI from GitHub Actions'
 inputs:
-  sfdx-auth-url:
-    description: Authorize a Salesforce org using an SFDX auth URL
-    required: false
   sf-cli-version:
     description: sf cli version number
     required: false
+  auth-url:
+    description: The auth-url to be used in the auth-url authentication flow
+    required: false
+  jwt_username:
+    description: The username to be used in the jwt authentication flow
+    required: false
+  jwt_client_id:
+    description: The client id to be used in the jwt authentication flow
+    required: false
+  jwt_private_key:
+    description: The private key to be used in the jwt authentication flow
+    required: false
+  jwt_private_key_base64_encoded:
+    description: The base64 encoded private key to be used in the jwt authentication flow
+    required: false
+  access_token:
+    description: The access token to be used in the access-token flow
+    required: false
+  access_token_url:
+    description: The instance url be used in the access-token flow
+    required: false
+    
 runs:
   using: 'node16'
   main: 'index.js'

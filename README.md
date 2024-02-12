@@ -4,17 +4,40 @@ This action allows to use the Salesforce sf CLI from GitHub Actions
 
 ## Inputs
 
-### `sfdx-auth-url`
+### sf cli version
 
-**Optional** Authorize a Salesforce org using an SFDX auth URL
+**Optional** Set a specific sf cli version. No version number will install the latest. You can find the version number from [salesforcecli/cli releases](https://github.com/salesforcecli/cli/releases).
 
-The secret must have the format `force://<refreshToken>@<instanceUrl>` or `force://<clientId>:<clientSecret>:<refreshToken>@<instanceUrl>`
+#### Variables:
 
-You can obtain the URL from a authorized org from your local machine using: `sf force org display -u ORG-ALIAS --verbose`
+- `sf-cli-version`
 
-### sf-cli-version
+### JWT authenication
 
-**Optional** Set a specific sf cli version. No version number will install the latest. You can find the version number from [salesforcecli/cli releases](https://github.com/salesforcecli/cli/releases)
+**Optional** Authorize using the jwt flow. See [documentation](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm).
+
+#### Variables:
+
+- `jwt_username`
+- `jwt_client_id`
+- `jwt_private_key` (or use `jwt_private_key_base64_encoded` if preferred)
+
+### sfdx-url flow
+
+**Optional** Authorize using the sfdx-url flow. See [documentation](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified).
+
+#### Variables:
+
+- `auth-url`
+
+### access-token flow
+
+**Optional** Authorize using the access-token flow. See [documentation](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_access-token_unified)
+
+#### Variables:
+
+- `access_token`
+- `access_token_url` (instance url, e.g., https://yourdomain.my.salesforce.com)
 
 ## Example usage
 
