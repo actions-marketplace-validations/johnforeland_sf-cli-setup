@@ -1,6 +1,6 @@
-# Salesforce SFDX CLI action
+# Salesforce sf CLI action
 
-This action allows to use the Salesforce SFDX CLI from GitHub Actions
+This action allows to use the Salesforce sf CLI from GitHub Actions
 
 ## Inputs
 
@@ -12,27 +12,34 @@ The secret must have the format `force://<refreshToken>@<instanceUrl>` or `force
 
 You can obtain the URL from a authorized org from your local machine using: `sfdx force:org:display -u ORG-ALIAS --verbose`
 
+### sf-cli-version
+
+**Optional** Set a specific sf cli version. No version number will install the latest. You can find the version number from [salesforcecli/cli releases](https://github.com/salesforcecli/cli/releases)
+
 ## Example usage
 
 ```yaml
-name: SFDX Test Run on Push
+name: SF Test Run on Push
 
 on: [push]
 
 jobs:
   test:
-  
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: sfdx-actions/setup-sfdx@v1
+      - uses: johnforeland/sf-cli-setup@v1
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-      - name: sfdx-test-run
-        run: sfdx force:apex:test:run -l RunLocalTests -w 30
+          sf-cli-version: 2.27.6
+      - name: Run Tests
+        run: sf force apex test run -l RunLocalTests -w 30
 ```
 
 ## License
+
+Forked from [sfdx-actions/setup-sfdx](https://github.com/sfdx-actions/setup-sfdx)
+
 ```
 MIT License
 
