@@ -10,7 +10,7 @@ This action allows to use the Salesforce sf CLI from GitHub Actions
 
 The secret must have the format `force://<refreshToken>@<instanceUrl>` or `force://<clientId>:<clientSecret>:<refreshToken>@<instanceUrl>`
 
-You can obtain the URL from a authorized org from your local machine using: `sfdx force:org:display -u ORG-ALIAS --verbose`
+You can obtain the URL from a authorized org from your local machine using: `sf force org display -u ORG-ALIAS --verbose`
 
 ### sf-cli-version
 
